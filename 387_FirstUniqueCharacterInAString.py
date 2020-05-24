@@ -11,7 +11,7 @@
 class Solution:
     def firstUniqChar(self, s):
         d = {}
-        keys = []
+        keys = ""
 
         if not s:
             return -1
@@ -23,11 +23,11 @@ class Solution:
 
         for k,v in d.items():
             if v == 1:
-                keys.append(k)
+                keys += k
 
         for i in range(len(s)):
-            if keys:
-                if keys[0] == s[i]:
+            if len(keys)>0:
+                if s[i] in keys:
                     return i
             else:
                 return -1
@@ -38,5 +38,5 @@ class Solution:
         return min(index) if len(index) > 0 else -1
 
 if __name__ == "__main__":
-    s = "leetcode"
-    print(Solution().better_solution(s))
+    s = "loveleetcode"
+    print(Solution().firstUniqChar(s))
